@@ -6,6 +6,7 @@ class Thermostat {
     this.MINIMUM_TEMPERATURE = 10;
     this.maxTemp = 25;
     this.powerSavingMode = true;
+    this.usageText = 'medium-usage'
   }
 
   getCurrentTemperature() {
@@ -16,13 +17,15 @@ class Thermostat {
     if (this.isMaximumTemp()) {
       return;
     }
-    return (this.temperature += 1);
+    (this.temperature += 1);
+    this.usage();
   }
   down() {
     if (this.isMinimumTemperature()) {
       return;
     }
-    return (this.temperature -= 1);
+    (this.temperature -= 1);
+    this.usage();
   }
 
   isMinimumTemperature() {
@@ -45,18 +48,19 @@ class Thermostat {
   }
 
   reset() {
-    return (this.temperature = 20);
+    (this.temperature = 20);
+    this.usage();
   }
 
   usage() {
     if (this.temperature < 18){
-      return 'low-usage'
+      this.usageText = 'low-usage'
     }
     else if (this.temperature > 25 ){
-      return 'high-usage'
+      this.usageText = 'high-usage'
     }
     else {
-      return 'medium-usage'
+      this.usageText = 'medium-usage'
     }
   }
 }
