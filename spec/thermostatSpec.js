@@ -42,22 +42,24 @@ describe("Thermostat", function () {
     }
     expect(thermostat.getCurrentTemperature()).toEqual(32);
   });
-  it('resets the temperature back to 20', function() {
+  it("resets the temperature back to 20", function () {
     thermostat.reset();
     expect(thermostat.getCurrentTemperature()).toEqual(20);
   });
-  it('Has a low usage', function() {
-    for (var i = 0; i < 10; i++){
-    thermostat.down()};
-    expect(thermostat.usage()).toEqual('low-usage');
-  })
-  it('Has a medium usage', function() {
-    expect(thermostat.usage()).toEqual('medium-usage');
-  })
-  it('Has a high usage', function() {
+  it("Has a low usage", function () {
+    for (var i = 0; i < 10; i++) {
+      thermostat.down();
+    }
+    expect(thermostat.usageText).toEqual("low-usage");
+  });
+  it("Has a medium usage", function () {
+    expect(thermostat.usageText).toEqual("medium-usage");
+  });
+  it("Has a high usage", function () {
     thermostat.powerSaving();
-    for (var i = 0; i < 20; i++){
-    thermostat.up()};
-    expect(thermostat.usage()).toEqual('high-usage');
-  })
+    for (var i = 0; i < 20; i++) {
+      thermostat.up();
+    }
+    expect(thermostat.usageText).toEqual("high-usage");
+  });
 });
